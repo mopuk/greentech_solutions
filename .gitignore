@@ -1,0 +1,30 @@
+# Node.js dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
+# IDE configurations
+.vscode/
+.idea/
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+
+# Coverage reports
+coverage/
