@@ -2,12 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: {
-        index: './src/index.js'
-    },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Output Management',
+            title: 'GreenTech Solutions',
+            template: "src/index.html",
+            filename: "index.html",
         }),
     ],
     output: {
