@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-import imagemin from 'imagemin';
+const imagemin = require('imagemin');
 
 const files = await imagemin(['images/*.{jpg,png}'], {
     destination: 'build/images',
