@@ -16,19 +16,24 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, 'css-loader']
             },
             {
-                test: /\.(png|jpe?g|gif|svg)$/i,
-                type: 'asset/resource',
-                generator: {
-                    filename: 'images/[name][ext]'
-                }
+                test: /\.(jpg|jpeg|png|gif|webp)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]',
+                        },
+                    },
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            webp: {
+                                quality: 75,
+                            },
+                        },
+                    },
+                ],
             },
-            {
-                test: /\.html$/,
-                use: [{
-                    loader: 'html-loader',
-                    options: { esModule: false }
-                }]
-            }
         ]
     },
     plugins: [
