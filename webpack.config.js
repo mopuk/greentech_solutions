@@ -1,34 +1,41 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const imagemin = require('imagemin');
-
-// const files = await imagemin(['images/*.{jpg,png}'], {
-//     destination: 'build/images',
-//     plugins: [
-//     ]
-// });
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'GreenTech Solutions',
-            template: "src/index.html",
-            filename: "index.html",
-        }),
-    ],
+    entry: './src/index.js',
     output: {
-        filename: 'index.bundle.js',
         path: path.resolve(__dirname, 'build'),
-        clean: true,
-        assetModuleFilename: '[path][name][ext]',
+        filename: 'bundle.js',
+        publicPath: ''
     },
     module: {
         rules: [
             {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
             },
-        ],
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'images/[name][ext]'
+                }
+            },
+            {
+                test: /\.html$/,
+                use: [{
+                    loader: 'html-loader',
+                    options: { esModule: false }
+                }]
+            }
+        ]
     },
-    mode: "production"
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            filename: 'index.html'
+        }),
+        new MiniCssExtractPlugin({ filename: 'styles.css' })
+    ]
 };
