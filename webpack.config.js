@@ -1,12 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const imagemin = require('imagemin');
+// const imagemin = require('imagemin');
 
-const files = await imagemin(['images/*.{jpg,png}'], {
-    destination: 'build/images',
-    plugins: [
-    ]
-});
+// const files = await imagemin(['images/*.{jpg,png}'], {
+//     destination: 'build/images',
+//     plugins: [
+//     ]
+// });
 
 module.exports = {
     plugins: [
