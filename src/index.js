@@ -1,3 +1,5 @@
+import "./index.css"
+
 document.addEventListener("DOMContentLoaded", () => {
 
     function checkForm(form) {
